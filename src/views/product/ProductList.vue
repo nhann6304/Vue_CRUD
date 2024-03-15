@@ -2,9 +2,7 @@
     <div class="product_list">
         <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
             <h3 class="display-4">Product Management</h3>
-            <p>
-                <router-link to="/Product/create">Add new</router-link>
-            </p>
+            <router-link to="/product/create">Add new</router-link>
         </div>
 
         <div class="container">
@@ -23,14 +21,13 @@
                             <th scope="row">{{ item.id }}</th>
                             <td>{{ item.name }}</td>
                             <td>{{ item.price }}</td>
-                            <!-- <td>{{ item.description }}</td> -->
                             <td>
-                                <button class="btn btn-primary">Edit</button>
+                                <router-link :to="{ name: 'product.edit', params: { id: item.id } }">
+                                    <button class="btn btn-primary">Edit</button>
+                                </router-link>
                                 <button class="btn btn-danger ml-2" @click="onDelete(item.id)">Delete</button>
-
                             </td>
                         </tr>
-
                     </tbody>
                 </table>
             </div>

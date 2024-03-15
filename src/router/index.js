@@ -19,6 +19,11 @@ const routes = [
     component: () => import('../views/product/ProductForm.vue'),
   },
   {
+    path: '/product/edit/:id',
+    name: 'product.edit',
+    component: () => import('../views/product/ProductForm.vue'),
+  },
+  {
     path: '/user',
     name: 'user.form',
     component: () => import('../views/users/UserList.vue'),
@@ -27,7 +32,7 @@ const routes = [
     path: '/user/create',
     name: 'user.list',
     component: () => import('../views/users/UserForm.vue'),
-  }
+  },
   
 ]
 

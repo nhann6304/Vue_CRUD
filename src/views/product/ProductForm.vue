@@ -35,7 +35,11 @@
                 <div class="form-group row">
                     <label for="inputPassword" class="col-sm-3 col-form-label"></label>
                     <div class="col-sm-9 text-left">
-                        <button type="reset" class="btn btn-danger">Cancel</button>&nbsp;
+                        <router-link to="/Product">
+                            <button type="reset" class="btn btn-danger" @click="cancel()">Cancel</button>
+                            &nbsp;
+                        </router-link>
+
                         <button type="submit" class="btn btn-primary">Save</button>
                     </div>
                 </div>
@@ -60,6 +64,13 @@ export default {
                 price: "",
                 description: "",
             }
+        }
+    },
+
+    created() {
+        let productId = this.$route.params.id
+        if (productId) {
+            this.getInforProduct(productId);
         }
     },
     methods: {
@@ -91,6 +102,17 @@ export default {
         },
         save() {
             if (this.validate()) {
+                if (this.product.id) {
+                    this.$request.put(`http://localhost:3000/product/${this.product.id}`, this.product).then(res => {
+                        if (res) {
+                            this.$router.push({ name: 'product.list' }) // Thêm thành công chuyển trang 
+                            return
+                        } else {
+                            alert("Thêm thất bại")
+                        }
+                    })
+                    return;
+                }
                 this.$request.post('http://localhost:3000/product', this.product).then(res => {
                     if (res) {
                         this.$router.push({ name: 'product.list' }) // Thêm thành công chuyển trang 
@@ -100,6 +122,16 @@ export default {
                     }
                 })
             }
+        },
+        getInforProduct(productId) {
+            this.$request.get(`http://localhost:3000/product/${productId}`).then(res => {
+                this.product = res.data;
+            })
+        },
+        cancel() {
+            this.product.name = '';
+            this.product.price = '';
+            this.product.description = '';
         }
 
     }
