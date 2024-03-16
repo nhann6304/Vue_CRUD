@@ -1,5 +1,6 @@
 <template>
-  <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+  <!-- <HelloWorld /> -->
+  <!-- <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
     <h5 class="my-0 mr-md-auto font-weight-normal">
       <router-link class="p-2 text-dark" to="/">Vue Mini
         Project
@@ -11,10 +12,18 @@
       <router-link class="p-2 text-dark" to="/User">User management</router-link>
     </nav>
     <a class="btn btn-outline-primary" routerlink="cart">Administrator</a>
-  </div>
-
-
+  </div> -->
   <router-view />
+  <!-- ---------------------------------------------------------------------------------------------------------- -->
+  <Header />
 </template>
+
+<script setup>
+
+import Header from './components/Header.vue';
+
+</script>
+
+
 
 <style></style>

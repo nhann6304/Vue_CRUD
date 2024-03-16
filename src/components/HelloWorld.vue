@@ -1,10 +1,7 @@
 <template>
-  <div class="container">
-    hêhe
-  </div>
+  helloo
+  dsfhdksfhdksf
+  fhdsljfd
 </template>
-
 <script></script>
-
-
 <style></style>
